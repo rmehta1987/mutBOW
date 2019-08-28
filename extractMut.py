@@ -82,6 +82,7 @@ def createFiles(the_df):
         # Create a dataframe of patients x mutations
         newpd.iloc[ind_id][filtered_counts.index.values] = filtered_counts.values
 
+    # Is a stack like save, so the 2nd argument is the 1st argument when loading
     np.savez('patient_bow.npz', pat_idx, pat_cnt)
     np.savez('patient_vocab.npz', mut_array)
 
@@ -114,7 +115,7 @@ if args.multiple:
     the_df = createAllDataFrame(args.dataset)
 else:
     the_df = createOneDataFrame(args.dataset)
-    
+
 the_df = sortPatients(the_df)
 createFiles(the_df)
 
